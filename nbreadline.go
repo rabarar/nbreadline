@@ -28,9 +28,6 @@ func (r *Reader) New() {
 
 func (r *Reader) Close() {
 	r.ctrl <- true
-	close(r.ctrl)
-	close(r.data)
-	close(r.err)
 }
 
 func (r *Reader) ReadLine() (string, error) {
