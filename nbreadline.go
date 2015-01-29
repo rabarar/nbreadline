@@ -27,7 +27,9 @@ func (r *Reader) New() {
 }
 
 func (r *Reader) Close() {
-	r.ctrl <- true
+	// This will cause a deadlock - there is no way to close the routine
+	// given that the readline blocks.
+	//r.ctrl <- true
 }
 
 func (r *Reader) ReadLine() (string, error) {
